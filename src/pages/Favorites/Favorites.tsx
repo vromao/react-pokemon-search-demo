@@ -1,6 +1,6 @@
-import { PokemonCard } from "@/components/PokemonCard";
-import { useFavoritesStore } from "@/store/favorites";
-import Alert from "react-bootstrap/Alert";
+import { PokemonCard } from '@/components/PokemonCard';
+import { useFavoritesStore } from '@/store/favorites';
+import Alert from 'react-bootstrap/Alert';
 
 export const Favorites = () => {
   const favorites = useFavoritesStore((state) => state.favorites);

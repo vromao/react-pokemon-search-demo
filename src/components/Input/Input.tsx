@@ -17,13 +17,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <Form.Group className="mb-3 w-100">
         <Form.Label htmlFor={label}>{label}</Form.Label>
         <div className="position-relative d-flex flex-column align-items-center justify-content-center">
-          <Form.Control
-            id={label}
-            ref={ref}
-            isInvalid={!!error}
-            value={value}
-            {...rest}
-          />
+          <Form.Control id={label} ref={ref} isInvalid={!!error} value={value} {...rest} />
           <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
           {isLoading && (
             <div className="position-absolute end-0 pe-3">
@@ -35,7 +29,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
       </Form.Group>
     );
-  }
+  },
 );
 
 Input.displayName = 'Input';

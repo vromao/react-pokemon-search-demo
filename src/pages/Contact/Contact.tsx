@@ -4,11 +4,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useJsonPlaceholderCreatePost } from '@/hooks/useJsonPlaceholderCreatePost';
 
-const formSchema = yup.object({
-  title: yup.string().required('Título é obrigatório'),
-  body: yup.string().required('Mensagem é obrigatória'),
-  userId: yup.number().typeError('ID do usuário deve ser um número').required('ID do usuário é obrigatório'),
-}).required();
+const formSchema = yup
+  .object({
+    title: yup.string().required('Título é obrigatório'),
+    body: yup.string().required('Mensagem é obrigatória'),
+    userId: yup
+      .number()
+      .typeError('ID do usuário deve ser um número')
+      .required('ID do usuário é obrigatório'),
+  })
+  .required();
 
 type FormData = {
   title: string;
@@ -21,9 +26,9 @@ export const Contact = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FormData>({
-    resolver: yupResolver(formSchema)
+    resolver: yupResolver(formSchema),
   });
 
   const {
@@ -32,7 +37,7 @@ export const Contact = () => {
     isPending,
     isError,
     error,
-    isSuccess
+    isSuccess,
   } = useJsonPlaceholderCreatePost();
 
   const onSubmit = (data: FormData) => {
@@ -48,27 +53,15 @@ export const Contact = () => {
       <h1 className="text-2xl font-bold mb-6">Contact</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <Input
-          label="Título"
-          {...register('title')}
-          error={errors.title?.message}
-        />
-        <Input
-          label="Mensagem"
-          {...register('body')}
-          error={errors.body?.message}
-        />
+        <Input label="Título" {...register('title')} error={errors.title?.message} />
+        <Input label="Mensagem" {...register('body')} error={errors.body?.message} />
         <Input
           label="ID do Usuário"
           type="number"
           {...register('userId')}
           error={errors.userId?.message}
         />
-        <button
-          type="submit"
-          className="btn btn-primary w-100 rounded mt-4"
-          disabled={isPending}
-        >
+        <button type="submit" className="btn btn-primary w-100 rounded mt-4" disabled={isPending}>
           {isPending ? 'Enviando...' : 'Enviar'}
         </button>
       </form>
@@ -85,4 +78,4 @@ export const Contact = () => {
       )}
     </div>
   );
-}
+};

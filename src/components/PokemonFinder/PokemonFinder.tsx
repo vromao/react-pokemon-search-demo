@@ -1,43 +1,48 @@
-import { useForm } from "react-hook-form";
-import { Input } from "../Input";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
-import { usePokemon, useDebounce } from "../../hooks";
-import { PokemonCard } from "../PokemonCard";
+import { useForm } from 'react-hook-form';
+import { Input } from '../Input';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import { usePokemon, useDebounce } from '../../hooks';
+import { PokemonCard } from '../PokemonCard';
 
 interface FormValues {
   pokemon: string;
 }
 
 export const PokemonFinder = () => {
-  const { register, reset, watch, formState: { errors } } = useForm<FormValues>({
-    defaultValues: { pokemon: "" }
+  const {
+    register,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>({
+    defaultValues: { pokemon: '' },
   });
-  const pokemonName = watch("pokemon");
+  const pokemonName = watch('pokemon');
   const [debouncedPokemonName, resetDebounce] = useDebounce(pokemonName, 2000);
 
   const { data, error, isLoading, isError, isFetching } = usePokemon(debouncedPokemonName.trim());
 
-  const isUserSearching = (pokemonName && !data && !isError)
-  const isLoadingPokemonInfo = isUserSearching || (isLoading || isFetching)
+  const isUserSearching = pokemonName && !data && !isError;
+  const isLoadingPokemonInfo = isUserSearching || isLoading || isFetching;
 
   const handleReset = () => {
-    reset({ pokemon: "" });
-    resetDebounce("");
+    reset({ pokemon: '' });
+    resetDebounce('');
   };
 
   return (
     <div className="container pokemon-finder">
       <h2 className="text-center mb-4">Find Your Pokémon</h2>
 
-      <Form onSubmit={e => e.preventDefault()}>
+      <Form onSubmit={(e) => e.preventDefault()}>
         <div className="d-flex">
           <Input
             label="Search Pokémon"
             placeholder="Type a Pokémon name here! e.g Bulbasaur!"
             error={errors.pokemon?.message}
-            {...register("pokemon")}
+            {...register('pokemon')}
             isLoading={isLoadingPokemonInfo}
           />
         </div>
@@ -57,9 +62,7 @@ export const PokemonFinder = () => {
 
       <div className="mt-4">
         {isError && (
-          <Alert variant="danger">
-            {(error as Error)?.message || "Error fetching Pokémon."}
-          </Alert>
+          <Alert variant="danger">{(error as Error)?.message || 'Error fetching Pokémon.'}</Alert>
         )}
 
         {data && !isLoading && <PokemonCard className="mx-auto" pokemon={data} />}
@@ -78,4 +81,4 @@ export const PokemonFinder = () => {
       </div>
     </div>
   );
-}
+};

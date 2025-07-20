@@ -7,9 +7,7 @@ export interface JsonPlaceholderPost {
   userId: number;
 }
 
-async function createPost(
-  data: Omit<JsonPlaceholderPost, 'id'>
-): Promise<JsonPlaceholderPost> {
+async function createPost(data: Omit<JsonPlaceholderPost, 'id'>): Promise<JsonPlaceholderPost> {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
     headers: {

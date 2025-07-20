@@ -28,7 +28,7 @@ export const useFavoritesStore = create<FavoritesState>((set, get) => ({
     set((state) =>
       state.favorites.some((fav) => fav.id === pokemon.id)
         ? state
-        : { favorites: [...state.favorites, pokemon] }
+        : { favorites: [...state.favorites, pokemon] },
     ),
   removeFavorite: (id) =>
     set((state) => ({

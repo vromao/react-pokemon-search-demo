@@ -1,6 +1,6 @@
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Heart, HeartFill } from 'react-bootstrap-icons';
 import { useFavoritesStore, type PokemonData } from '../../store/favorites';
 
@@ -26,9 +26,9 @@ export const PokemonCard = ({ className, pokemon }: PokemonCardProps) => {
       id,
       name,
       sprites: {
-        front_default: sprites.front_default || ''
+        front_default: sprites.front_default || '',
       },
-      types
+      types,
     });
   };
 

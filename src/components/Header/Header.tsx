@@ -1,5 +1,5 @@
-import { RoutesPaths } from "@/routes";
-import { Link } from "react-router";
+import { RoutesPaths } from '@/routes';
+import { Link } from 'react-router';
 
 export const Header = () => {
   return (
@@ -10,20 +10,17 @@ export const Header = () => {
         <nav>
           <ul className="d-flex gap-2 list-unstyled">
             <li>
-              <Link className="p-2 text-decoration-none btn btn-light" to={RoutesPaths.HOME}
-              >
+              <Link className="p-2 text-decoration-none btn btn-light" to={RoutesPaths.HOME}>
                 Home
               </Link>
             </li>
             <li>
-              <Link className="p-2 text-decoration-none btn btn-light" to={RoutesPaths.FAVORITES}
-              >
+              <Link className="p-2 text-decoration-none btn btn-light" to={RoutesPaths.FAVORITES}>
                 Favorites
               </Link>
             </li>
             <li>
-              <Link className="p-2 text-decoration-none btn btn-light" to={RoutesPaths.CONTACT}
-              >
+              <Link className="p-2 text-decoration-none btn btn-light" to={RoutesPaths.CONTACT}>
                 Contact
               </Link>
             </li>
@@ -32,4 +29,4 @@ export const Header = () => {
       </div>
     </header>
   );
-}
+};

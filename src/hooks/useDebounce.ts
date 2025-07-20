@@ -6,10 +6,7 @@ import { useState, useEffect, useCallback } from 'react';
  * @param delay The delay in milliseconds
  * @returns An array containing the debounced value and a reset function
  */
-export function useDebounce<T>(
-  value: T,
-  delay: number
-): [T, (resetValue?: T) => void] {
+export function useDebounce<T>(value: T, delay: number): [T, (resetValue?: T) => void] {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   // Reset function to immediately update the debounced value
@@ -18,7 +15,7 @@ export function useDebounce<T>(
     (resetValue?: T) => {
       setDebouncedValue(resetValue !== undefined ? resetValue : value);
     },
-    [value]
+    [value],
   );
 
   useEffect(() => {
