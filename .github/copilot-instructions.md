@@ -93,15 +93,15 @@ This project uses **Prettier** for code formatting and **ESLint** for linting. P
 
 ## Integration Points and stack
 
-- [**react v19**](https://react.dev/): Core library
+- [**React v19**](https://react.dev/): Core library
 - [**react-router-dom v7**](https://reactrouter.com/home): For routing
 - [**Bootstrap v5**](https://getbootstrap.com/): CSS framework for utility classes and layout
 - [**react-bootstrap v2**](https://react-bootstrap.netlify.app/): All UI and forms using React components
 - [**react-bootstrap-icons v1**](https://react-bootstrap.netlify.app/): Icons for UI using React components
 - [**react-hook-form v7**](https://www.react-hook-form.com/): Form state/validation
-- [**yup v1**](https://github.com/jquense/yup): Schema validation
+- [**Yup v1**](https://github.com/jquense/yup): Schema validation
 - [**react-query v5**](https://tanstack.com/query/v5/docs/framework/react/overview): Data fetching/caching
-- [**zustand v5**](https://github.com/pmndrs/zustand): Global state management
+- [**Zustand v5**](https://github.com/pmndrs/zustand): Global state management
 
 ## Key Files & Examples
 
