@@ -1,4 +1,4 @@
-# React Top Stack Forms – AI Coding Agent Guide
+# React Pokemon Search demo – AI Coding Agent Guide
 
 ## Project Overview
 

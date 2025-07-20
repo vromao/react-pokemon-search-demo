@@ -1,4 +1,4 @@
-# React Top Stack Forms
+# React Pokemon Search demo
 
 ## Project Overview
 
