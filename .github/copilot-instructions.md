@@ -15,7 +15,7 @@ This project is a React 19 + TypeScript + Vite app for reusable, accessible form
 
 ## Data Flow & Integration Patterns
 
-- **Form State**: Managed with `react-hook-form` and validated with `yup` (see example in `untitled:Untitled-1`).
+- **Form State**: Managed with `react-hook-form` and validated with `yup` (see example in `src/pages/Contant.tsx` component).
 - **API Data**: Fetched via custom hooks (e.g., `usePokemon` uses react-query for caching and error handling).
 - **Favorites**: Managed globally with Zustand (`useFavoritesStore`), accessible in any component.
 - **Component Communication**: Props and hooks; no context API used. Components are designed to be reusable and composable.
@@ -32,22 +32,37 @@ This project is a React 19 + TypeScript + Vite app for reusable, accessible form
 
 ```tsx
 import { forwardRef } from 'react';
-import Form from 'react-bootstrap/Form';
 import type { InputHTMLAttributes } from 'react';
+import Form from 'react-bootstrap/Form';
+import type { FormControlProps } from 'react-bootstrap/FormControl';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  error?: string;
-}
+// Merge FormControlProps and native input props, omitting conflicts from HTML attributes
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, keyof FormControlProps> &
+  FormControlProps & {
+    label: string;
+    error?: string;
+    isLoading?: boolean;
+  };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, ...rest }, ref) => (
-    <Form.Group className="mb-3">
-      {label && <Form.Label>{label}</Form.Label>}
-      <Form.Control ref={ref} isInvalid={!!error} {...rest} />
-      <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
-    </Form.Group>
-  )
+  ({ label, error, value, isLoading, ...rest }, ref) => {
+    return (
+      <Form.Group className="mb-3 w-100">
+        <Form.Label htmlFor={label}>{label}</Form.Label>
+        <div className="position-relative d-flex flex-column align-items-center justify-content-center">
+          <Form.Control id={label} ref={ref} isInvalid={!!error} value={value} {...rest} />
+          <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
+          {isLoading && (
+            <div className="position-absolute end-0 pe-3">
+              <div className="spinner-border spinner-border-sm text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </Form.Group>
+    );
+  },
 );
 ```
 
@@ -56,6 +71,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 - **Dev server**: `npm run dev` (Vite, HMR)
 - **Build**: `npm run build` (TypeScript + Vite)
 - **Lint**: `npm run lint` (ESLint, see `eslint.config.js`)
+- **Format**: `npm run format` (Prettier)
+- **Format:check**: `npm run format:check` (Prettier check only)
 - **Preview**: `npm run preview` (local prod build)
 
 ## Project-Specific Conventions
@@ -65,6 +82,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 - **Styling**: Use Bootstrap classes and react-bootstrap components for all UI. Add custom classes only in `src/index.css`.
 - **State**: Use Zustand for global state, react-query for async data, react-hook-form for forms.
 - **Routing**: Use centralized route definitions from `src/routes.ts`.
+
+## Formatting & Linting
+
+This project uses **Prettier** for code formatting and **ESLint** for linting. Please ensure your code is formatted and linted before committing. Use the following commands:
+
+- `npm run format` – Format all files with Prettier
+- `npm run format:check` – Check formatting without making changes
+- `npm run lint` – Run ESLint
 
 ## Integration Points
 
