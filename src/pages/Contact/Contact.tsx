@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useJsonPlaceholderCreatePost } from '@/hooks/useJsonPlaceholderCreatePost';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 const formSchema = yup
   .object({
@@ -61,20 +63,20 @@ export const Contact = () => {
           {...register('userId')}
           error={errors.userId?.message}
         />
-        <button type="submit" className="btn btn-primary w-100 rounded mt-4" disabled={isPending}>
+        <Button variant="primary" type="submit" className="w-100 rounded mt-4" disabled={isPending}>
           {isPending ? 'Enviando...' : 'Enviar'}
-        </button>
+        </Button>
       </form>
 
       {isError && (
-        <div className="alert alert-danger mt-3" role="alert">
+        <Alert variant="danger" className="mt-3">
           Erro ao criar post: {error instanceof Error ? error.message : 'Erro desconhecido'}
-        </div>
+        </Alert>
       )}
       {isSuccess && postResult && (
-        <div className="alert alert-success mt-3" role="alert">
+        <Alert variant="success" className="mt-3">
           Post criado com sucesso! ID: <b>{postResult.id}</b>
-        </div>
+        </Alert>
       )}
     </div>
   );
