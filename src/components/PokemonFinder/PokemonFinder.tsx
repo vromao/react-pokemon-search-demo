@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Input } from '../Input';
+import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -33,7 +34,7 @@ export const PokemonFinder = () => {
   };
 
   return (
-    <div className="container pokemon-finder">
+    <Container>
       <h2 className="text-center mb-4">Find Your Pokémon</h2>
 
       <Form onSubmit={(e) => e.preventDefault()}>
@@ -79,6 +80,6 @@ export const PokemonFinder = () => {
           </Alert>
         )}
       </div>
-    </div>
+    </Container>
   );
 };

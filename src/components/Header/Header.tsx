@@ -1,10 +1,11 @@
 import { RoutesPaths } from '@/routes';
+import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router';
 
 export const Header = () => {
   return (
     <header className="p-4 mb-4 text-white text-uppercase bg-indigo">
-      <div className="container">
+      <Container>
         <h1 className="fs-4 fw-bold text-center">Poke search demo</h1>
 
         <nav>
@@ -26,7 +27,7 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
-      </div>
+      </Container>
     </header>
   );
 };
