@@ -78,7 +78,8 @@ export const ChatWidget = () => {
           style={{
             bottom: 20,
             right: 20,
-            maxWidth: 'calc(100% - 40px)',
+            maxWidth: 480,
+            marginLeft: 20,
             height: 500,
             zIndex: 1000,
             display: 'flex',
