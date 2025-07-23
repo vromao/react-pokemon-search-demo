@@ -1,8 +1,10 @@
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 import { Heart, HeartFill } from 'react-bootstrap-icons';
 import { useFavoritesStore, type PokemonData } from '../../store/favorites';
+import { typeColors } from '@/types';
 
 interface PokemonCardProps {
   pokemon: PokemonData;
@@ -47,32 +49,29 @@ export const PokemonCard = ({ className, pokemon }: PokemonCardProps) => {
       </Card.Header>
       <Card.Body>
         <Row className="align-items-center">
-          <Col xs={4} className="text-center">
+          <Col className="text-center">
             {sprites?.front_default ? (
-              <img
-                src={sprites.front_default}
-                alt={name}
-                style={{ width: 96, height: 96 }}
-                className="img-fluid"
-              />
+              <Image src={sprites.front_default} alt={name} fluid />
             ) : (
               <div className="bg-light rounded p-3">No image</div>
             )}
           </Col>
+        </Row>
+        <Row>
           <Col>
-            <Card.Text className="d-flex flex-column">
-              <div>
-                <strong>Dex n°:</strong> {id}
-              </div>
-              <div>
-                <strong>Type:</strong>
-                {types.map((t) => (
-                  <span key={t.type.name} className="badge bg-info text-dark mx-1">
-                    {t.type.name}
-                  </span>
-                ))}
-              </div>
-            </Card.Text>
+            <span className="d-block mb-3 text-body-tertiary">N° {id}</span>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {types.map((t) => (
+              <span
+                key={t.type.name}
+                className={`badge me-1 ${typeColors[t.type.name] || 'bg-info'}`}
+              >
+                {t.type.name}
+              </span>
+            ))}
           </Col>
         </Row>
       </Card.Body>

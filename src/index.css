@@ -9,3 +9,77 @@
 .bg-gray-800 {
   background-color: #1f2937;
 }
+
+/* Pokémon Type Colors */
+.pokemon-type-normal {
+  background-color: #a8a77a;
+  color: #212529;
+}
+.pokemon-type-fire {
+  background-color: #ee8130;
+  color: #fff;
+}
+.pokemon-type-water {
+  background-color: #6390f0;
+  color: #fff;
+}
+.pokemon-type-electric {
+  background-color: #f7d02c;
+  color: #212529;
+}
+.pokemon-type-grass {
+  background-color: #7ac74c;
+  color: #fff;
+}
+.pokemon-type-ice {
+  background-color: #96d9d6;
+  color: #212529;
+}
+.pokemon-type-fighting {
+  background-color: #c22e28;
+  color: #fff;
+}
+.pokemon-type-poison {
+  background-color: #a33ea1;
+  color: #fff;
+}
+.pokemon-type-ground {
+  background-color: #e2bf65;
+  color: #212529;
+}
+.pokemon-type-flying {
+  background-color: #a98ff3;
+  color: #212529;
+}
+.pokemon-type-psychic {
+  background-color: #f95587;
+  color: #fff;
+}
+.pokemon-type-bug {
+  background-color: #a6b91a;
+  color: #212529;
+}
+.pokemon-type-rock {
+  background-color: #b6a136;
+  color: #212529;
+}
+.pokemon-type-ghost {
+  background-color: #735797;
+  color: #fff;
+}
+.pokemon-type-dragon {
+  background-color: #6f35fc;
+  color: #fff;
+}
+.pokemon-type-dark {
+  background-color: #705746;
+  color: #fff;
+}
+.pokemon-type-steel {
+  background-color: #b7b7ce;
+  color: #212529;
+}
+.pokemon-type-fairy {
+  background-color: #d685ad;
+  color: #212529;
+}
