@@ -110,6 +110,25 @@ This project uses **Prettier** for code formatting and **ESLint** for linting. P
 - `src/components/PokemonFinder/PokemonFinder.tsx`: Example of form, async data, and error handling
 - `src/store/favorites.ts`: Zustand store pattern
 
+## Environment Variables (.env)
+
+**Best Practice:**
+
+- Always keep a `.env.example` file versioned in the repository, containing all required environment variables, but without sensitive values.
+- The actual `.env` file should be included in `.gitignore` and never committed.
+- Add explanatory comments in `.env.example` to guide users on how to fill it, for example:
+
+  ```bash
+  # VITE_WEBHOOK_URL: Webhook URL for chat messages
+  VITE_WEBHOOK_URL=
+  ```
+
+**Example instruction:**
+
+```markdown
+Copy `.env.example` to `.env` and fill in the required values before running the project.
+```
+
 ---
 
 When adding or updating code, always:
