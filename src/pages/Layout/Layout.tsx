@@ -2,6 +2,7 @@ import { Outlet } from 'react-router';
 import Container from 'react-bootstrap/Container';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { ChatWidget } from '../../components/ChatWidget';
 
 export const Layout = () => (
   <div className="d-flex flex-column min-vh-100">
@@ -10,5 +11,6 @@ export const Layout = () => (
       <Outlet />
     </Container>
     <Footer />
+    <ChatWidget />
   </div>
 );
